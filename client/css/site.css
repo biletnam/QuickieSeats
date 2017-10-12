@@ -1,0 +1,13 @@
+body{
+  background-color: #016163 !important;
+}
+
+.navbar-brand{
+  color: white !important;
+  font-family: 'Lobster', cursive;
+  text-align: center;
+}
+
+.movie-slider{
+  margin-top: 64px;
+}
