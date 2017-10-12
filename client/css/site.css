@@ -18,7 +18,7 @@ footer{
   text-align: center;
 }
 
-.movie-slider{
+.ptr-container{
   margin-top: 32px;
 }
 
@@ -26,6 +26,20 @@ footer{
   margin: 24px;
 }
 
+.dash-item{
+  height: 250px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  background-color: #C3D100;
+}
+
 .movie-img{
   height: 300px;
+}
+
+#step-ptr{
+  color:white;
+  font-family: 'Lobster', cursive;
 }
