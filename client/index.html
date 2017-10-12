@@ -27,7 +27,7 @@
 
 <body>
 <header>
-  <nav class="navbar navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <ul>
       <li><a class="navbar-brand" href="#">QuickieSeats</a></li>
       <li><a href="#" class="navbar-brand">Movies</a></li>
@@ -93,6 +93,51 @@
           <div class="form-group">
             <label for="username" class="form-control-label">Username:</label>
             <input type="text" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-control-label">Password:</label>
+            <input type="text" class="form-control" id="password">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button id="loginButton" type="button" class="btn btn-primary">Login</button>
+          <button id="registerButton" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="firstname" class="form-control-label">First Name:</label>
+            <input type="text" class="form-control" id="firstname">
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="form-control-label">Last Name:</label>
+            <input type="text" class="form-control" id="lastname">
+          </div>
+          <div class="form-group">
+            <label for="username" class="form-control-label">Username:</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-control-label">Email Address:</label>
+            <input type="text" id="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="emailVerify" class="form-control-label">Verify Email Address:</label>
+            <input type="text" id="emailVerify" class="form-control">
           </div>
           <div class="form-group">
             <label for="password" class="form-control-label">Password:</label>
