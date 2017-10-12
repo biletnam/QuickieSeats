@@ -32,7 +32,8 @@ a {
     padding: 8px;
 }
 a:hover{
-  background-color:
+  background-color: #2e87da;
+
 }
 .navbar-brand{
   color: #FFF !important;
