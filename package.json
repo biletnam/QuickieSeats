@@ -1,0 +1,23 @@
+{
+  "name": "quickieseats",
+  "version": "1.0.0",
+  "description": "A movie ticket reservation system meant to eliminate the step where account creation is revised. Think Event Brite.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digora/QuickieSeats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digora/QuickieSeats/issues"
+  },
+  "homepage": "https://github.com/digora/QuickieSeats#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
