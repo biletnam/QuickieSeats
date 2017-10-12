@@ -2,6 +2,16 @@ body{
   background-color: #016163 !important;
 }
 
+header{
+  background-color: #0E3D3E !important;
+}
+
+footer{
+  text-align: center;
+  color: white;
+  background-color: #0E3D3E !important;
+}
+
 .navbar-brand{
   color: #FFF !important;
   font-family: 'Lobster', cursive;
