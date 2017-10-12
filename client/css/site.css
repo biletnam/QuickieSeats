@@ -15,3 +15,7 @@ body{
 .img-slide{
   margin: 24px;
 }
+
+.movie-img{
+  height: 300px;
+}
