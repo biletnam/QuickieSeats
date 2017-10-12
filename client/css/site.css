@@ -3,11 +3,15 @@ body{
 }
 
 .navbar-brand{
-  color: white !important;
+  color: #FFF !important;
   font-family: 'Lobster', cursive;
   text-align: center;
 }
 
 .movie-slider{
-  margin-top: 64px;
+  margin-top: 32px;
+}
+
+.img-slide{
+  margin: 24px;
 }
