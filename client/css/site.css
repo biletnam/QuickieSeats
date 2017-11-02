@@ -24,6 +24,14 @@ button {
 
 }
 
+.slick-prev:before{
+  color: black !important;
+}
+
+.slick-next:before{
+  color: black !important;
+}
+
 button:hover{
   background-color: #2e87da; /* Green */
     color: white;
@@ -62,7 +70,7 @@ a {
     padding: 8px;
 }
 a:hover{
-  background-color: #2e87da;
+  background-color: #0E3D3E;
 
 }
 .navbar-brand{
@@ -81,6 +89,11 @@ a:hover{
 .img-holder {
   width: 25%;
 }
+
+.slick-dots{
+  text-align: center !important;
+}
+
 .dash-item{
   height: 250px;
   padding-top: 10px;
