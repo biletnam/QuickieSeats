@@ -235,3 +235,12 @@ input[type=checkbox].seatcheck {
 
   }
 }
+
+#mv-screen-container{
+  margin:40px;
+}
+
+#mv-screen{
+  background-color:#0E3D3E;
+  color:white;
+}
