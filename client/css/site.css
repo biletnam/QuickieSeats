@@ -5,9 +5,7 @@ body{
 header{
   background-color: #037EF3 !important;
 }
-p {
-  text-align: justify;
-}
+
 button {
     background-color: #037ef3;
     border: none;
@@ -22,6 +20,19 @@ button {
     transition-duration: 0.6s;
 
 
+}
+
+.movie-link{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+}
+
+.movie-link:hover{
+  background-color: #00708C;
 }
 
 .slick-prev:before{
@@ -53,7 +64,7 @@ ul {
     margin: 0;
     padding: 0;
 }
-li {
+li a{
     float: left;
 }
 h1 {
@@ -236,8 +247,36 @@ input[type=checkbox].seatcheck {
   }
 }
 
+.mv-seat-container{
+  display: table;
+}
+
+.mv-seat-label{
+  display:table-row;
+}
+
+.mv-seat-chk{
+  display:table-row;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.mv-seat{
+  background-color:#0E3D3E;
+  color:white;
+  margin:5px;
+}
+
+#mv-seat-container{
+  margin-top: 100px;
+}
+
 #mv-screen-container{
   margin:40px;
+}
+
+#mv-choice{
+  margin-top: 40px;
 }
 
 #mv-screen{
