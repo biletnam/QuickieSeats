@@ -163,10 +163,26 @@ input[type=checkbox].seatcheck {
 				user-select: none;
 			}
 
+
+
 #step-ptr{
   color:#253858;
   font-family: 'Lato', cursive;
 }
+
+#movie-specs{
+  font-size:12px;
+  margin-left: 12px;
+}
+
+#movie-title{
+  font-size: 32px;
+}
+
+#mv-det-container{
+  margin-top:32px;
+}
+
 .seats {
   display: flex;
   flex-direction: row;
