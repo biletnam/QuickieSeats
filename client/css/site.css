@@ -80,7 +80,7 @@ a {
     display: block;
     padding: 8px;
 }
-a:hover{
+a:hover .movie-link{
   background-color: #0E3D3E;
 
 }
@@ -103,6 +103,12 @@ a:hover{
 }
 .img-holder {
   width: 25%;
+}
+
+
+#reg-header{
+  font-family: 'Lobster', cursive;
+  color: #FFF;
 }
 
 .slick-dots{
