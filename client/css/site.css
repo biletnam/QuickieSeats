@@ -273,6 +273,15 @@ input[type=checkbox].seatcheck {
   display: table;
 }
 
+.card-body{
+  padding: 32px;
+}
+
+.card{
+  margin-top:32px;
+  margin-bottom: 32px;
+}
+
 .mv-seat-label{
   display:table-row;
 }
@@ -299,6 +308,11 @@ input[type=checkbox].seatcheck {
 
 #mv-choice{
   margin-top: 40px;
+}
+
+#reg-body{
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 #mv-screen{
