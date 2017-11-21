@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/digora/QuickieSeats#readme",
   "dependencies": {
+    "browser-sync": "^2.18.13",
     "express": "^4.16.2",
     "mongoose": "^4.13.4"
   }
