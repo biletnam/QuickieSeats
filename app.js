@@ -1,23 +1,43 @@
 var express = require('express');
-var browserSync = require('browser-sync');
+// var browserSync = require('browser-sync');
+
+var bodyParser = require('body-parser');
 
 var routes = require('./client/routes/router.js')
+
+var path = require('path');
+
+var mongoose  = require('mongoose');
+
 
 //global.jQuery = require('jquery');
 //var bootstrap = require('bootstrap');
 var app = express();
 
+mongoose.connect('mongodb://localhost/testForAuth');
+var db = mongoose.connection;
 
 
-var bs = browserSync.create();
-
-bs.init({
-  proxy: "localhost:4000",
-  files : ["client/**"]
+//handle mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
 });
+// serve static files from template
+app.use(express.static(__dirname + '/'));
+
+// var bs = browserSync.create();
+
+// bs.init({
+//   proxy: "localhost:3000",
+//   files : ["client/**"]
+// });
 
 app.use(express.static('client'));
 app.use('/', routes);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req,res,next){
     res.status(404).end("404 not found");
