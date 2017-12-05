@@ -33,6 +33,34 @@ app.use(express.static(__dirname + '/'));
 //   files : ["client/**"]
 // });
 
+//use sessions for tracking logins
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: false
+}));
+
+//authenticate input against database
+UserSchema.statics.authenticate = function (email, password, callback) {
+  User.findOne({ email: email })
+    .exec(function (err, user) {
+      if (err) {
+        return callback(err)
+      } else if (!user) {
+        var err = new Error('User not found.');
+        err.status = 401;
+        return callback(err);
+      }
+      bcrypt.compare(password, user.password, function (err, result) {
+        if (result === true) {
+          return callback(null, user);
+        } else {
+          return callback();
+        }
+      })
+    });
+}
+
 app.use(express.static('client'));
 app.use('/', routes);
 

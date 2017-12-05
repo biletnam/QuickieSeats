@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../data/user');
+var User = require('../models/user');
 
 
 // GET /
 router.get('/', function(req, res, next) {
-  return res.sendFile(path.join(__dirname + '/index.html'));
+  return res.sendFile(path.join(__dirname + '/register.html'));
 });
 
 router.post('/', function(req, res, next){
