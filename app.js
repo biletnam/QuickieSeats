@@ -14,6 +14,8 @@ var app = express();
 mongoose.connect('mongodb://localhost/testForAuth');
 var db = mongoose.connection;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -41,8 +43,6 @@ app.use(session({
 app.use(express.static('client'));
 app.use('/', routes);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req,res,next){
     res.status(404).end("404 not found");

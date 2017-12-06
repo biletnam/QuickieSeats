@@ -5,44 +5,45 @@ var User = require('../models/user');
 
 // GET /
 router.get('/', function(req, res, next) {
+  console.log("getting register page?");
   return res.sendFile(path.join(__dirname + '/register.html'));
 });
 
 router.post('/', function(req, res, next){
   if(req.body.password !== req.body.confPassword){
+    console.log(req.body.password + " NA NI " + req.body.passwordConf);
+    console.log("NANISORE?? " + req.body.password !== req.body.confPassword);
     var err = new Error('Passwords do not match');
     err.status = 400;
     res.send("Passwords do not match");
     return next(err);
   }
 
-  if(req.body.name.fname &&
-    req.body.name.lname &&
-    req.body.email &&
-    req.body.date &&
+  if(req.body.firstname &&
+    req.body.lastname &&
+    req.body.emailAddress &&
     req.body.password &&
     req.body.confPassword) {
 
       var userData = {
-        fname: req.body.name.fname,
-        lname: req.body.name.lname,
-        email: req.body.email,
-        date: req.body.date,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        emailAddress: req.body.emailAddress,
         password: req.body.password,
-        confPassword: req.body.confPassword,
+        confPassword: req.body.confPassword
       }
 
       User.create(userData, function(err, user){
         if(err){
           return next(err);
         }else{
-          return res.redirect('/profile');
+          return res.redirect('/index');
         }
       });
     }
 });
 
-router.get('/profile', function (req, res, next) {
+router.get('/index', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -53,7 +54,7 @@ router.get('/profile', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          return res.send('<h1>Name: </h1>' + user.lastname + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
