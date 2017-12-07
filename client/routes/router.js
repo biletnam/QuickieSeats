@@ -9,7 +9,7 @@ router.get('/register', function(req, res, next) {
   return res.sendFile(path.join(__dirname + '/register.html'));
 });
 
-router.get('/index', function(req, res, next) {
+router.get('/', function(req, res, next) {
   console.log("getting index page?");
   return res.sendFile(path.join(__dirname + '/index.html'));
 });
@@ -49,6 +49,28 @@ router.post('/register', function(req, res, next){
     }
 });
 
+router.post('/login', function(req,res,next){
+  if (req.body.logemail && req.body.logpassword) {
+    console.log("words are in the input");
+    User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong email or password.');
+        err.status = 401;
+        return next(err);
+      } else {
+        req.session.userId = user._id;
+        console.log("userlogged");
+        return res.redirect('/profile');
+      }
+    });
+    } else {
+      var err = new Error('All fields required.');
+      err.status = 400;
+      return next(err);
+    }
+});
+
+
 router.get('/profile', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
@@ -75,7 +97,7 @@ router.get('/logout', function (req, res, next) {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/index');
+        return res.redirect('/');
       }
     });
   }

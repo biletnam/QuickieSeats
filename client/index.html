@@ -93,18 +93,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="/login" method="post">
           <div class="form-group">
             <label for="username" class="form-control-label">Email:</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" id="username" name="logemail">
           </div>
           <div class="form-group">
             <label for="password" class="form-control-label">Password:</label>
-            <input type="text" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="logpassword">
           </div>
+          <input type="submit" value="LOGIN">
         </form>
         <div class="modal-footer">
-          <button id="loginButton" type="button" class="btn btn-primary">Login</button>
           <a href="register.html"><button id="registerButton" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register</button></a>
         </div>
       </div>
