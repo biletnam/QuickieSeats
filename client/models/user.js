@@ -2,42 +2,53 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
-  name: {
-    name: [{firstname: String, lastname: String}],
+
+  firstname: {
     type: String,
-    unique: true,
     required: true,
     trim: true
   },
-  dateOfBirth: {
-    type: Date,
-    default: Date.now
+  lastname: {
+    type: String,
+    required: true,
+    trim: true
   },
-  gender: String,
   emailAddress: {
     type: String,
     unique: true,
     required: true
   },
-  address: {
-    address: [{address1: String,
-    address2: String}],
-    type: String
-  },
-  city: String,
-  state: String,
-  zipCode: Number,
-  telephoneNum: Number,
-  cpNum: Number,
   password: {
     type: String,
-    required: true,
+    required: true
   },
   passwordConf: {
     type: String,
-    required: true,
+    required: true
   }
 });
+
+//authenticate input against database
+UserSchema.statics.authenticate = function (email, password, callback) {
+  User.findOne({ email: email })
+    .exec(function (err, user) {
+      if (err) {
+        return callback(err)
+      } else if (!user) {
+        var err = new Error('User not found.');
+        err.status = 401;
+        return callback(err);
+      }
+      bcrypt.compare(password, user.password, function (err, result) {
+        if (result === true) {
+          return callback(null, user);
+        } else {
+          return callback();
+        }
+      })
+    });
+}
+
 
 //hashing a password before saving it to the database
 UserSchema.pre('save', function (next) {

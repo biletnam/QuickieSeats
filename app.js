@@ -11,21 +11,27 @@ var MongoStore = require('connect-mongo')(session);
 //var bootstrap = require('bootstrap');
 var app = express();
 
-mongoose.connect('mongodb://localhost/testForAuth');
+
+
+mongoose.connect('mongodb://localhost/myApp');
 var db = mongoose.connection;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   // we're connected!
+  console.log("Connected");
 });
 // serve static files from template
 app.use(express.static(__dirname + '/'));
 
+
 // var bs = browserSync.create();
+// include routes
+
 
 // bs.init({
 //   proxy: "localhost:3000",
@@ -36,7 +42,10 @@ app.use(express.static(__dirname + '/'));
 app.use(session({
   secret: 'secret',
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
 }));
 
 

@@ -10,9 +10,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
-  if(req.body.password !== req.body.confPassword){
+  if(req.body.password !== req.body.passwordConf){
     console.log(req.body.password + " NA NI " + req.body.passwordConf);
-    console.log("NANISORE?? " + req.body.password !== req.body.confPassword);
     var err = new Error('Passwords do not match');
     err.status = 400;
     res.send("Passwords do not match");
@@ -23,27 +22,29 @@ router.post('/', function(req, res, next){
     req.body.lastname &&
     req.body.emailAddress &&
     req.body.password &&
-    req.body.confPassword) {
+    req.body.passwordConf) {
 
       var userData = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         emailAddress: req.body.emailAddress,
         password: req.body.password,
-        confPassword: req.body.confPassword
+        passwordConf: req.body.passwordConf
       }
 
       User.create(userData, function(err, user){
         if(err){
           return next(err);
         }else{
-          return res.redirect('/index');
+          console.log("User created?");
+          req.session.userId = user._id;
+          return res.redirect('/profile');
         }
       });
     }
 });
 
-router.get('/index', function (req, res, next) {
+router.get('/profile', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -54,11 +55,24 @@ router.get('/index', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Name: </h1>' + user.lastname + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          return res.send('<h1>Name: </h1>' + user.lastname + '<h2>Mail: </h2>' + user.emailAddress + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
 });
 
+// GET for logout logout
+router.get('/logout', function (req, res, next) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+});
 
 module.exports = router;
