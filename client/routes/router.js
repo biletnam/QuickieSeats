@@ -4,12 +4,17 @@ var User = require('../models/user');
 
 
 // GET /
-router.get('/', function(req, res, next) {
+router.get('/register', function(req, res, next) {
   console.log("getting register page?");
   return res.sendFile(path.join(__dirname + '/register.html'));
 });
 
-router.post('/', function(req, res, next){
+router.get('/index', function(req, res, next) {
+  console.log("getting index page?");
+  return res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+router.post('/register', function(req, res, next){
   if(req.body.password !== req.body.passwordConf){
     console.log(req.body.password + " NA NI " + req.body.passwordConf);
     var err = new Error('Passwords do not match');
@@ -55,7 +60,8 @@ router.get('/profile', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Name: </h1>' + user.lastname + '<h2>Mail: </h2>' + user.emailAddress + '<br><a type="button" href="/logout">Logout</a>')
+          console.log("Proceeding to login");
+          return res.render('../views/logged.ejs', {retrievedData: user.firstname});
         }
       }
     });
@@ -69,7 +75,7 @@ router.get('/logout', function (req, res, next) {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/');
+        return res.redirect('/index');
       }
     });
   }

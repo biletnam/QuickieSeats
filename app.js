@@ -1,15 +1,20 @@
 var express = require('express');
 // var browserSync = require('browser-sync');
 var bodyParser = require('body-parser');
-var routes = require('./client/routes/router.js')
+var routes = require('./client/routes/router.js');
 var path = require('path');
 var session = require('express-session');
 var mongoose  = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
+var app = express();
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+
 
 //global.jQuery = require('jquery');
 //var bootstrap = require('bootstrap');
-var app = express();
 
 
 
@@ -54,7 +59,7 @@ app.use('/', routes);
 
 
 app.use(function(req,res,next){
-    res.status(404).end("404 not found");
+    res.status(404).end("404 not found go cry.");
 });
 
 app.listen(4000, function(){

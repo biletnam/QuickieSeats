@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Slick Slider CSS -->
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+  integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/site.css">
+  <link rel=icon href=img/favi.png>
+  <!-- Google Fonts CDN -->
+  <link href="https://fonts.googleapis.com/css?family=Lato|Lobster" rel="stylesheet">
+
+  <title>QuickieSeats</title>
+</head>
+
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <ul>
+      <li><a class="navbar-brand" href="index.html">QuickieSeats</a></li>
+      <li><a href="movies.html" class="navbar-brand">Movies</a></li>
+      <li><a href="#" class="navbar-brand">Cinemas</a></li>
+      <li><a href="#" class="navbar-brand">About</a></li>
+      <li style="float:right"><%= retrievedData %></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-5 ptr-container">
+      <h1 id="step-ptr">Top Picks!</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="movie-slider">
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/500days.jpg" alt="Cinque Terre"></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/american.jpg" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/dead.jpg" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/good.png" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/her.jpg" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/perks.jpg" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/kita.jpg" alt=""></a></div>
+        <div class="img-slide"><a class="movie-link" href="movie-details.html"><img class="movie-img img-fluid mx-auto d-block" src="img/100tula.jpg" alt=""></a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="dash-item">
+        <div class="main"><center>Twitter Feed</center></div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis aliquam urna ac euismod. Ut pellentesque ligula quis fringilla venenatis. Vestibulum non eleifend metus, molestie pharetra turpis. Praesent nisl diam, accumsan et leo non, porttitor blandit ex. Nunc hendrerit diam libero, mattis auctor felis finibus ut. Vivamus vel dui id urna sodales fermentum nec sed odio. Sed ac accumsan turpis. Lorem Ipsum...</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="dash-item">
+        <div class="main"><center>Cinema Announcements</center></div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis aliquam urna ac euismod. Ut pellentesque ligula quis fringilla venenatis. Vestibulum non eleifend metus, molestie pharetra turpis. Praesent nisl diam, accumsan et leo non, porttitor blandit ex. Nunc hendrerit diam libero, mattis auctor felis finibus ut. Vivamus vel dui id urna sodales fermentum nec sed odio. Sed ac accumsan turpis. Lorem Ipsum...</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="dash-item">
+      <div class="main">  <center>Upcoming Movies</center></div>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis aliquam urna ac euismod. Ut pellentesque ligula quis fringilla venenatis. Vestibulum non eleifend metus, molestie pharetra turpis. Praesent nisl diam, accumsan et leo non, porttitor blandit ex. Nunc hendrerit diam libero, mattis auctor felis finibus ut. Vivamus vel dui id urna sodales fermentum nec sed odio. Sed ac accumsan turpis. Lorem Ipsum...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="username" class="form-control-label">Email:</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-control-label">Password:</label>
+            <input type="text" class="form-control" id="password">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button id="loginButton" type="button" class="btn btn-primary">Login</button>
+          <a href="register.html"><button id="registerButton" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registerModal">Register</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="registerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="firstname" class="form-control-label">First Name:</label>
+            <input type="text" class="form-control" id="firstname">
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="form-control-label">Last Name:</label>
+            <input type="text" class="form-control" id="lastname">
+          </div>
+          <div class="form-group">
+            <label for="username" class="form-control-label">Username:</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-control-label">Email Address:</label>
+            <input type="text" id="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="emailVerify" class="form-control-label">Verify Email Address:</label>
+            <input type="text" id="emailVerify" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-control-label">Password:</label>
+            <input type="text" class="form-control" id="password">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Login</button>
+          <button type="button" class="btn btn-secondary">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-text">(c) QuickieSeats 2017.</span>
+</footer>
+
+
+
+<!-- Bootstrap Script -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<!-- Slick Slider Script -->
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+<!-- Custom Script -->
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>
