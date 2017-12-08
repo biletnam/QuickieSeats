@@ -60,7 +60,7 @@ router.post('/login', function(req,res,next){
       } else {
         req.session.userId = user._id;
         console.log("userlogged");
-        return res.redirect('/profile');
+        return res.render('../views/logged.ejs', {retrievedData: user.firstname});
       }
     });
     } else {
