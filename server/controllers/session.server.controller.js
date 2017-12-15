@@ -4,6 +4,19 @@ let jwt = require("jsonwebtoken");
 let bcrypt = require("bcrypt");
 let User = require("../models/user.server.model.js");
 
+var admin = new User({
+  name:"admin",
+  password: "123"
+});
+
+admin.save(function(req, res, error){
+  if(error){
+    return handleError(error);
+  } else {
+    console.log("Admin Created?");
+  }
+});
+
 exports.create = function(req, res) {
 
     let login = req.body || { name: "", password: "" };
