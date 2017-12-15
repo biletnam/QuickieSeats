@@ -25,6 +25,18 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "mongoose": "^4.13.4"
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1"
+  },
+  "env": {
+    "production": {
+      "presets": ["react"]
+    }
   }
+
 }
