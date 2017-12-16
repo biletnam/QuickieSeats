@@ -59,6 +59,23 @@ class AppBox extends React.Component {
               <footer>
                 <span className="footer-text">(c) QuickieSeats 2017.</span>
               </footer>
+
+              <div className="modal fade" id="loginModal">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="loginModalLabel">Login</h5>
+                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h1>Login Stuff</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
         </Router>
 
