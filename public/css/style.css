@@ -185,8 +185,21 @@ input[type=checkbox].seatcheck {
   font-size: 32px;
 }
 
+.navbar .container-fluid>.navbar-header {
+  float: left;
+  margin-right: 10px;
+}
+.navbar .navbar-nav {
+  float: left;
+  margin: 5px;
+}
+
+.nav>li{
+  float:left !important;
+}
+
 .text-right{
-  float: right;
+  float: right !important;
 }
 
 #mv-det-container{
