@@ -55,7 +55,7 @@ class CinemaBox extends React.Component {
             <div className="row">
                 <div className="col-sm">
                   <button type="button" onClick={this._handleClick.bind(this)} className="btn btn-primary float-right">
-                    +New
+                    Reserve a Seat
                 </button>
                 </div>
             </div>

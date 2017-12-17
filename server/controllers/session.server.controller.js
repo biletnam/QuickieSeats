@@ -4,7 +4,7 @@ let jwt = require("jsonwebtoken");
 let bcrypt = require("bcrypt");
 let User = require("../models/user.server.model.js");
 
-var admin = new User({
+let admin = new User({
   name:"admin",
   password: "123"
 });

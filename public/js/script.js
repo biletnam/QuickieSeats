@@ -38,6 +38,7 @@ class AppBox extends React.Component {
                 <Route exact path="/seats/:seatId" component={SeatingEditBox} />
                 <Route exact path="/seat/new" component={SeatingNewBox} />
                 <Route exact path="/" component={CinemaBox} />
+                <Route exact path="/register/new" component={RegisterBox} />
               </div>
 
               <footer>
@@ -54,5 +55,6 @@ const Login = () => <LoginBox />
 const Home = () => <CinemaBox />
 const SeatingNew = () => <SeatingNewBox />
 const SeatingEdit = () => <SeatingEditBox />
+const Register = () => <RegisterBox />
 
 ReactDOM.render(<AppBox />, document.getElementById("root"));

@@ -3,10 +3,12 @@ let auth = require("./auth.js");
 let express = require("express");
 let sessionCtrl = require("../server/controllers/session.server.controller.js");
 let seatCtrl = require("../server/controllers/seat.server.controller.js");
+let accountCtrl = require("../server/controllers/account.server.controller.js");
 
 let router = express.Router();
 
 router.post("/session", sessionCtrl.create);
+router.post("/register", accountCtrl.register);
 
 router.get("/seat", auth.check, seatCtrl.getAll);
 router.get("/seat/:seatId", auth.check, seatCtrl.getById);
