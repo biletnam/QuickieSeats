@@ -70,7 +70,7 @@ class SeatingEditBox extends React.Component {
                     <div className="form-group">
                         <label htmlFor="date">Date</label>
                         <input
-                          ref={(input) => this._date = select}
+                          ref={(input) => this._date = input}
                           className="form-control"
                           value={this.state.seat.date}
                           onChange={this._handleDateChange.bind(this)}
@@ -203,9 +203,11 @@ class SeatingEditBox extends React.Component {
         let seatId = this.props.match.params.seatId;
 
         let seat = {
-            yesterday: this._yesterday.value,
-            today: this._today.value,
-            impediment: this._impediment.value
+            cinema: this._cinema.value,
+            movie: this._movie.value,
+            time: this._time.value,
+            date: this._date.value,
+            numbers: this._numbers.value
         }
 
         $.ajax({
@@ -308,7 +310,7 @@ class SeatingNewBox extends React.Component {
                     <div className="form-group">
                         <label htmlFor="date">Date</label>
                         <input
-                          ref={(input) => this._date = select}
+                          ref={(input) => this._date = input}
                           className="form-control"
                           type="date"
                           id="date" />
