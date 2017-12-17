@@ -44,7 +44,7 @@ class AppBox extends React.Component {
                   <a className="navbar-brand" href="index.html">QuickieSeats</a>
                   <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                      <li><a href="movies.html" className="navbar-brand">Movies</a></li>
+                      <li><a href="#" className="navbar-brand">Movies</a></li>
                       <li><a href="#" className="navbar-brand">Cinemas</a></li>
                       <li><a href="#" className="navbar-brand">About</a></li>
                       <li><a href="#" className="navbar-brand" data-toggle="modal" data-target="#loginModal">Login/Register</a></li>
@@ -61,19 +61,7 @@ class AppBox extends React.Component {
               </footer>
 
               <div className="modal fade" id="loginModal">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="loginModalLabel">Login</h5>
-                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <h1>Login Stuff</h1>
-                    </div>
-                  </div>
-                </div>
+                <Route exact path="/session/new" component={LoginBox} />
               </div>
 
             </div>
