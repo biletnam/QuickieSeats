@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
-let movieSchema = new Schema({
+let seatSchema = new Schema({
     name: { type: String, required: true },
     project: { type: String, required: true },
     yesterday: String,
@@ -12,12 +12,12 @@ let movieSchema = new Schema({
     createdOn: { type: Date, default: Date.now }
 });
 
-movieSchema.statics = {
+seatSchema.statics = {
     findAll() {
         return new Promise((resolve, reject) => {
-            this.find({}, (err, movies) => {
+            this.find({}, (err, seats) => {
                 if(!err) {
-                    resolve(movies);
+                    resolve(seats);
                 } else {
                     reject(err);
                 }
@@ -26,6 +26,6 @@ movieSchema.statics = {
     }
 };
 
-var Movie = mongoose.model("Movie", movieSchema);
+var Seat = mongoose.model("Seat", seatSchema);
 
-module.exports = Movie;
+module.exports = Seat;

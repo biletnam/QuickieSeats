@@ -35,7 +35,7 @@ class AppBox extends React.Component {
 
               <div className="container" id="content">
                 <Route exact path="/session/new" component={LoginBox} />
-                <Route exact path="/" component={MovieBox} />
+                <Route exact path="/" component={CinemaBox} />
               </div>
 
               <footer>
@@ -49,8 +49,8 @@ class AppBox extends React.Component {
     }
 }
 const Login = () => <LoginBox />
-const Home = () => <MovieBox />
-const MeetingNew = () => <MeetingNewBox />
-const MeetingEdit = () => <MeetingEditBox />
+const Home = () => <CinemaBox />
+const SeatingNew = () => <SeatingNewBox />
+const SeatingEdit = () => <SeatingEditBox />
 
 ReactDOM.render(<AppBox />, document.getElementById("root"));
