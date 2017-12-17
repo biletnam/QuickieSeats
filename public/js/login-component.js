@@ -18,20 +18,28 @@ class LoginBox extends React.Component {
         }
 
         return (
-          <div className="modal-dialog">
-            <div className="modal-content">
-
-              <div className="modal-header">
-                <h5 className="modal-title" id="loginModalLabel">Login</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <h1>Login Stuff</h1>
-              </div>
+          <div className="container-fluid">
+            <div className="row">
+                <div className="col-sm"></div>
+                <div className="col-sm" id="col-sm-login">
+            <div className="alert-login alert alert-danger invisible" role="alert">
+                {this.state.message}
             </div>
-          </div>
+                    <form onSubmit={this._handleSubmit.bind(this)}>
+                        <div className="form-group">
+                            <label htmlFor="name">User ID</label>
+                            <input type="text" ref={(input) => this._name = input} className="form-control" id="name" placeholder="Enter user ID" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="password" ref={(input) => this._password = input} className="form-control" id="password" placeholder="Password" />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+                </div>
+                <div className="col-sm"></div>
+            </div>
+        </div>
         );
     }
 
