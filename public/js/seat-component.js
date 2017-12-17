@@ -362,14 +362,19 @@ class SeatingNewBox extends React.Component {
 
     _handleSubmit(e) {
         e.preventDefault();
+        var numbersArr = [];
+        for (var i = 0, l = this._numbers.selectedOptions.length; i < l; i++) {
 
-        let seat = {
-            movie: this._movie.value,
-            cinema: this._cinema.value,
-            date: this._date.value,
-            time: this._time.value,
-            numbers: this._numbers.value
-        }
+             numbersArr.push(this._numbers.selectedOptions[i].value);
+         }
+          console.log(numbersArr);
+          let seat = {
+              movie: this._movie.value,
+              cinema: this._cinema.value,
+              date: this._date.value,
+              time: this._time.value,
+              numbers: numbersArr
+          }
 
         $.ajax({
             type: "POST",

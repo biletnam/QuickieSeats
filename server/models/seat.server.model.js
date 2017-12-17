@@ -8,7 +8,7 @@ let seatSchema = new Schema({
     movie: { type: String, required: true },
     time: {type: String, required: true},
     date: {type: Date, default: Date.now},
-    numbers: {type: String, required: true}
+    numbers: {type: Array, required: true}
 });
 
 seatSchema.statics = {
