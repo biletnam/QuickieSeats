@@ -35,6 +35,8 @@ class AppBox extends React.Component {
 
               <div className="container" id="content">
                 <Route exact path="/session/new" component={LoginBox} />
+                <Route exact path="/seats/:seatId" component={SeatingEditBox} />
+                <Route exact path="/seat/new" component={SeatingNewBox} />
                 <Route exact path="/" component={CinemaBox} />
               </div>
 

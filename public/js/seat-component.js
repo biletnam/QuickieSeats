@@ -4,16 +4,16 @@ class SeatingEditBox extends React.Component {
         super();
 
         this.state = {
-            meeting: {},
+            seat: {},
             auth: true,
             done: false
         }
     }
 
     componentWillMount() {
-        let meetingId = this.props.match.params.meetingId;
+        let seatId = this.props.match.params.seatId;
 
-        this._fetchMeeting(meetingId);
+        this._fetchMeeting(seatId);
 
         if(!sessionStorage.getItem("token")) {
             this.setState({
@@ -45,15 +45,15 @@ class SeatingEditBox extends React.Component {
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label htmlFor="yesterday">Yesterday</label>
-                                        <textarea onChange={this._handleYesterdayChange.bind(this)} value={this.state.meeting.yesterday} ref={(textarea) => this._yesterday = textarea} className="form-control" id="yesterday" rows="3"></textarea>
+                                        <textarea onChange={this._handleYesterdayChange.bind(this)} value={this.state.seat.yesterday} ref={(textarea) => this._yesterday = textarea} className="form-control" id="yesterday" rows="3"></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="today">Today</label>
-                                        <textarea onChange={this._handleTodayChange.bind(this)} value={this.state.meeting.today} ref={(textarea) => this._today = textarea} className="form-control" id="today" rows="3"></textarea>
+                                        <textarea onChange={this._handleTodayChange.bind(this)} value={this.state.seat.today} ref={(textarea) => this._today = textarea} className="form-control" id="today" rows="3"></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="impediment">Impediment</label>
-                                        <textarea onChange={this._handleImpedimentChange.bind(this)} value={this.state.meeting.impediment} ref={(textarea) => this._impediment = textarea} className="form-control" id="impediment" rows="3"></textarea>
+                                        <textarea onChange={this._handleImpedimentChange.bind(this)} value={this.state.seat.impediment} ref={(textarea) => this._impediment = textarea} className="form-control" id="impediment" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div className="modal-footer">
@@ -69,10 +69,10 @@ class SeatingEditBox extends React.Component {
     }
 
     _handleYesterdayChange(e) {
-        let meeting = this.state.meeting;
+        let seat = this.state.seat;
 
         this.setState({
-            meeting: Object.assign({}, meeting,
+            seat: Object.assign({}, seat,
                 {
                     yesterday: e.target.value
                 })
@@ -80,10 +80,10 @@ class SeatingEditBox extends React.Component {
     }
 
     _handleTodayChange(e) {
-        let meeting = this.state.meeting;
+        let seat = this.state.seat;
 
         this.setState({
-            meeting: Object.assign({}, meeting,
+            seat: Object.assign({}, seat,
                 {
                     today: e.target.value
                 })
@@ -91,27 +91,27 @@ class SeatingEditBox extends React.Component {
     }
 
     _handleImpedimentChange(e) {
-        let meeting = this.state.meeting;
+        let seat = this.state.seat;
 
         this.setState({
-            meeting: Object.assign({}, meeting,
+            seat: Object.assign({}, seat,
                 {
                     impediment: e.target.value
                 })
         });
     }
 
-    _fetchMeeting(meetingId) {
+    _fetchMeeting(seatId) {
         $.ajax({
             type: "GET",
-            url: `/api/meeting/${meetingId}`,
+            url: `/api/seat/${seatId}`,
             headers: {
                 "Authorization": sessionStorage.getItem("token")
             }
-        }).done((meeting, status, xhr) => {
-            console.log(meeting);
+        }).done((seat, status, xhr) => {
+            console.log(seat);
             this.setState({
-                meeting
+                seat
             });
         }).fail((xhr) => {
             if(xhr.status == 401)
@@ -126,9 +126,9 @@ class SeatingEditBox extends React.Component {
     _handleSubmit(e) {
         e.preventDefault();
 
-        let meetingId = this.props.match.params.meetingId;
+        let seatId = this.props.match.params.seatId;
 
-        let meeting = {
+        let seat = {
             yesterday: this._yesterday.value,
             today: this._today.value,
             impediment: this._impediment.value
@@ -136,11 +136,11 @@ class SeatingEditBox extends React.Component {
 
         $.ajax({
             type: "PUT",
-            url: `/api/meeting/${meetingId}`,
+            url: `/api/seat/${seatId}`,
             headers: {
                 "Authorization": sessionStorage.getItem("token")
             },
-            data: meeting
+            data: seat
         }).done((data, status, xhr) => {
             this.setState({
                 done: true
@@ -154,7 +154,7 @@ class SeatingEditBox extends React.Component {
             }
         });
 
-        console.log(meeting);
+        console.log(seat);
 
     }
 
@@ -253,7 +253,7 @@ class SeatingNewBox extends React.Component {
     _handleSubmit(e) {
         e.preventDefault();
 
-        let meeting = {
+        let seat = {
             name: this._name.value,
             project: this._project.value,
             yesterday: this._yesterday.value,
@@ -263,12 +263,12 @@ class SeatingNewBox extends React.Component {
 
         $.ajax({
             type: "POST",
-            url: "/api/meeting",
+            url: "/api/seat",
             headers: {
                 "Authorization": sessionStorage.getItem("token")
             },
-            data: meeting
-        }).done((meeting, status, xhr) => {
+            data: seat
+        }).done((seat, status, xhr) => {
             this._close();
         }).fail((xhr) => {
             console.log(xhr.status);

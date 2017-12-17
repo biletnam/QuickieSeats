@@ -76,10 +76,10 @@ aside{
   position: absolute;
   padding-top: 100px
 }
-a {
+/* a {
     display: block;
     padding: 8px;
-}
+} */
 a:hover .movie-link{
   background-color: #0E3D3E;
 
