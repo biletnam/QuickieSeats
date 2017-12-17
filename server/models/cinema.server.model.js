@@ -11,14 +11,43 @@ let seatSchema = new Schema({
 let movieSchema = new Schema({
   name: String,
   date: Date,
+  time: String,
   seats: [seatSchema]
 });
 
 let cinemaSchema = new Schema({
-    name: { type: String, required: true },
-    location: { type: String, required: true },
+    name: String,
+    location: String,
     movies: [movieSchema]
 });
+
+cinemaSchema.statics = {
+    findAll() {
+        return new Promise((resolve, reject) => {
+            this.find({}, (err, cinemas) => {
+                if(!err) {
+                    resolve(cinemas);
+                } else {
+                    reject(err);
+                }
+            });
+        });
+    }
+};
+
+movieSchema.statics = {
+    findAll() {
+        return new Promise((resolve, reject) => {
+            this.find({}, (err, movies) => {
+                if(!err) {
+                    resolve(movies);
+                } else {
+                    reject(err);
+                }
+            });
+        });
+    }
+};
 
 seatSchema.statics = {
     findAll() {

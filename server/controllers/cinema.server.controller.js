@@ -1,10 +1,10 @@
-const Seat = require("../models/seat.server.model.js");
+const Cinema = require("../models/cinema.server.model.js");
 
 exports.getAll = function(req, res) {
 
-    Seat.findAll()
+    Cinema.findAll()
         .then((seat) => {
-            return res.status(200).json(seat);
+            return res.status(200).json(cinema);
         })
         .catch((error) => {
             console.log(error);
@@ -14,12 +14,12 @@ exports.getAll = function(req, res) {
 
 exports.getById = function(req, res) {
 
-     Seat.findById(req.params.seatId, function(err, seat) {
+     Cinema.findById(req.params.cinemaId, function(err, cinema) {
         if(err) {
             console.log(err);
             return res.status(500).send();
         } else {
-            return res.status(200).send(seat);
+            return res.status(200).send(cinema);
         }
     });
 }
