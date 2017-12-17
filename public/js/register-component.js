@@ -32,6 +32,7 @@ class RegisterBox extends React.Component {
                           <input type="password" ref={(input) => this._password = input} className="form-control" id="password" placeholder="Password"/>
                       </div>
                       <input type="submit" className="btn btn-primary" />
+                      <button type="button" className="btn btn-danger" onClick={this._close.bind(this)}>Cancel</button>
                     </form>
                   </div>
                   <div className="col-sm"></div>
