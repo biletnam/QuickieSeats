@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 let seatSchema = new Schema({
-    name: { type: String, required: true },
-    project: { type: String, required: true },
-    yesterday: String,
-    today: String,
-    impediment: String,
-    createdOn: { type: Date, default: Date.now }
+    cinema: { type: String, required: true },
+    movie: { type: String, required: true },
+    time: {type: String, required: true},
+    date: {type: Date, default: Date.now},
+    numbers: {type: String, required: true}
 });
 
 seatSchema.statics = {

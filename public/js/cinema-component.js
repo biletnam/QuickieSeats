@@ -89,10 +89,11 @@ class SeatingList extends React.Component {
                     <SeatCard
                         key={seat._id}
                         seatId={seat._id}
-                        name={seat.name}
-                        yesterday={seat.yesterday}
-                        today={seat.today}
-                        impediment={seat.impediment} />
+                        cinema={seat.cinema}
+                        movie={seat.movie}
+                        time={seat.time}
+                        date={seat.date}
+                        numbers={seat.numbers} />
                 )
         );
     }
@@ -130,13 +131,15 @@ class SeatCard extends React.Component {
         return(
                     <div className="card">
                         <div className="card-body">
-                            <h4 className="card-title">{this.props.name}</h4>
-                            <h6 className="card-subtitle mb-2 text-muted">Yesterday</h6>
-                            <p className="card-text">{this.props.yesterday}</p>
-                            <h6 className="card-subtitle mb-2 text-muted">Today</h6>
-                            <p className="card-text">{this.props.today}</p>
-                            <h6 className="card-subtitle mb-2 text-muted">Impediments</h6>
-                            <p className="card-text">{this.props.impediment}</p>
+                            <h4 className="card-title">{this.props.movie}</h4>
+                            <h6 className="card-subtitle mb-2 text-muted">Cinema</h6>
+                            <p className="card-text">{this.props.cinema}</p>
+                            <h6 className="card-subtitle mb-2 text-muted">Time</h6>
+                            <p className="card-text">{this.props.time}</p>
+                            <h6 className="card-subtitle mb-2 text-muted">Date</h6>
+                            <p className="card-text">{this.props.date}</p>
+                            <h6 className="card-subtitle mb-2 text-muted">Seat Numbers</h6>
+                            <p className="card-text">{this.props.numbers}</p>
                             <ManageButton seatId={this.props.seatId} action={this._handleEdit.bind(this)} text="Edit" />
                             <ManageButton seatId={this.props.seatId} action={this._handleDelete.bind(this)} text="Delete" />
                         </div>

@@ -1,6 +1,5 @@
 class RegisterBox extends React.Component {
 
-
       constructor() {
           super();
 

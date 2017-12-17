@@ -13,7 +13,7 @@ class SeatingEditBox extends React.Component {
     componentWillMount() {
         let seatId = this.props.match.params.seatId;
 
-        this._fetchMeeting(seatId);
+        this._fetchSeat(seatId);
 
         if(!sessionStorage.getItem("token")) {
             this.setState({
@@ -37,71 +37,145 @@ class SeatingEditBox extends React.Component {
         }
 
         return(
-        <div className="container-fluid">
+        <div className="container">
             <div className="row">
-                <div className="col-sm"></div>
                 <div className="col-sm" id="col-sm-meeting">
-                            <form onSubmit={this._handleSubmit.bind(this)}>
-                                <div className="modal-body">
-                                    <div className="form-group">
-                                        <label htmlFor="yesterday">Yesterday</label>
-                                        <textarea onChange={this._handleYesterdayChange.bind(this)} value={this.state.seat.yesterday} ref={(textarea) => this._yesterday = textarea} className="form-control" id="yesterday" rows="3"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="today">Today</label>
-                                        <textarea onChange={this._handleTodayChange.bind(this)} value={this.state.seat.today} ref={(textarea) => this._today = textarea} className="form-control" id="today" rows="3"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="impediment">Impediment</label>
-                                        <textarea onChange={this._handleImpedimentChange.bind(this)} value={this.state.seat.impediment} ref={(textarea) => this._impediment = textarea} className="form-control" id="impediment" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" onClick={this._handleClose.bind(this)} className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" className="btn btn-primary" />
-                                </div>
-                            </form>
+                  <form onSubmit={this._handleSubmit.bind(this)}>
+                    <div className="form-group">
+                        <label htmlFor="movie">Movie</label>
+                        <select
+                          onChange={this._handleMovieChange.bind(this)}
+                          id="movie"
+                          value={this.state.seat.movie}
+                          className="form-control"
+                          ref={(select) => this._movie = select}>
+                          <option value="Star Wars: The Last Jedi">Star Wars: The Last Jedi</option>
+                          <option value="Justice League">Justice League</option>
+                          <option value="Coco">Coco</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cinema">Cinema</label>
+                        <select
+                          onChange={this._handleCinemaChange.bind(this)}
+                          id="cinema"
+                          value={this.state.seat.cinema}
+                          className="form-control"
+                          ref={(select) => this._cinema = select}>
+                          <option value="Greenbelt 1">Greenbelt 1</option>
+                          <option value="Glorietta">Glorietta</option>
+                          <option value="SM Bicutan">SM Bicutan</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="date">Date</label>
+                        <input
+                          ref={(input) => this._date = select}
+                          className="form-control"
+                          value={this.state.seat.date}
+                          onChange={this._handleDateChange.bind(this)}
+                          type="date"
+                          id="date" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="time">Time</label>
+                        <select
+                          onChange={this._handleTimeChange.bind(this)}
+                          id="time"
+                          value={this.state.seat.time}
+                          className="form-control"
+                          ref={(select) => this._time = select}>
+                          <option value="9:00AM-10:30AM">9:00AM-10:30AM</option>
+                          <option value="11:00AM-12:30PM">11:00AM-12:30PM</option>
+                          <option value="1:00PM-2:30PM">1:00PM-2:30PM</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="numbers">Seats</label>
+                        <select multiple
+                          className="form-control"
+                          onChange={this._handleNumbersChange.bind(this)}
+                          id="numbers"
+                          value={this.state.seat.numbers}
+                          ref={(select) => this._numbers = select}>
+                          <option value="A1">A1</option>
+                          <option value="A2">A2</option>
+                          <option value="A3">A3</option>
+                          <option value="A4">A4</option>
+                          <option value="A5">A5</option>
+                        </select>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={this._handleClose.bind(this)}
+                      className="btn btn-secondary"
+                      data-dismiss="modal">
+                      Close
+                    </button>
+                    <input type="submit" className="btn btn-primary" />
+                  </form>
                 </div>
-                <div className="col-sm"></div>
             </div>
         </div>
         );
     }
 
-    _handleYesterdayChange(e) {
+    _handleMovieChange(e) {
         let seat = this.state.seat;
 
         this.setState({
             seat: Object.assign({}, seat,
                 {
-                    yesterday: e.target.value
+                    movie: e.target.value
                 })
         });
     }
 
-    _handleTodayChange(e) {
+    _handleCinemaChange(e) {
         let seat = this.state.seat;
 
         this.setState({
             seat: Object.assign({}, seat,
                 {
-                    today: e.target.value
+                    cinema: e.target.value
                 })
         });
     }
 
-    _handleImpedimentChange(e) {
+    _handleTimeChange(e) {
         let seat = this.state.seat;
 
         this.setState({
             seat: Object.assign({}, seat,
                 {
-                    impediment: e.target.value
+                    time: e.target.value
                 })
         });
     }
 
-    _fetchMeeting(seatId) {
+    _handleDateChange(e) {
+        let seat = this.state.seat;
+
+        this.setState({
+            seat: Object.assign({}, seat,
+                {
+                    date: e.target.value
+                })
+        });
+    }
+
+    _handleNumbersChange(e) {
+        let seat = this.state.seat;
+
+        this.setState({
+            seat: Object.assign({}, seat,
+                {
+                    numbers: e.target.value
+                })
+        });
+    }
+
+    _fetchSeat(seatId) {
         $.ajax({
             type: "GET",
             url: `/api/seat/${seatId}`,
@@ -205,40 +279,74 @@ class SeatingNewBox extends React.Component {
         }
 
         return (
-        <div className="container-fluid">
+        <div className="container">
             <div className="row">
-                <div className="col-sm"></div>
                 <div className="col-sm" id="col-sm-meeting">
-                            <form onSubmit={this._handleSubmit.bind(this)}>
-                                <div className="modal-body">
-                                    <div className="form-group">
-                                        <label htmlFor="name">Name</label>
-                                        <input type="text" ref={(input) => this._name = input} className="form-control" id="name" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="project">Project</label>
-                                        <input type="text" ref={(input) => this._project = input} className="form-control" id="project" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="yesterday">Yesterday</label>
-                                        <textarea ref={(textarea) => this._yesterday = textarea} className="form-control" id="yesterday" rows="3"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="today">Today</label>
-                                        <textarea ref={(textarea) => this._today = textarea} className="form-control" id="today" rows="3"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="impediment">Impediment</label>
-                                        <textarea ref={(textarea) => this._impediment = textarea} className="form-control" id="impediment" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" onClick={this._handleClose.bind(this)} className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <input type="submit" className="btn btn-primary" />
-                                </div>
-                            </form>
+                  <form onSubmit={this._handleSubmit.bind(this)}>
+                    <div className="form-group">
+                        <label htmlFor="movie">Movie</label>
+                        <select
+                          id="movie"
+                          className="form-control"
+                          ref={(select) => this._movie = select}>
+                          <option selected value="Star Wars: The Last Jedi">Star Wars: The Last Jedi</option>
+                          <option value="Justice League">Justice League</option>
+                          <option value="Coco">Coco</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cinema">Cinema</label>
+                        <select
+                          id="cinema"
+                          className="form-control"
+                          ref={(select) => this._cinema = select}>
+                          <option selected value="Greenbelt 1">Greenbelt 1</option>
+                          <option value="Glorietta">Glorietta</option>
+                          <option value="SM Bicutan">SM Bicutan</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="date">Date</label>
+                        <input
+                          ref={(input) => this._date = select}
+                          className="form-control"
+                          type="date"
+                          id="date" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="time">Time</label>
+                        <select
+                          id="time"
+                          className="form-control"
+                          ref={(select) => this._time = select}>
+                          <option selected value="9:00AM-10:30AM">9:00AM-10:30AM</option>
+                          <option value="11:00AM-12:30PM">11:00AM-12:30PM</option>
+                          <option value="1:00PM-2:30PM">1:00PM-2:30PM</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="numbers">Seats</label>
+                        <select multiple
+                          className="form-control"
+                          id="numbers"
+                          ref={(select) => this._numbers = select}>
+                          <option value="A1">A1</option>
+                          <option value="A2">A2</option>
+                          <option value="A3">A3</option>
+                          <option value="A4">A4</option>
+                          <option value="A5">A5</option>
+                        </select>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={this._handleClose.bind(this)}
+                      className="btn btn-secondary"
+                      data-dismiss="modal">
+                      Close
+                    </button>
+                    <input type="submit" className="btn btn-primary" />
+                  </form>
                 </div>
-                <div className="col-sm"></div>
             </div>
         </div>
         );
@@ -254,11 +362,11 @@ class SeatingNewBox extends React.Component {
         e.preventDefault();
 
         let seat = {
-            name: this._name.value,
-            project: this._project.value,
-            yesterday: this._yesterday.value,
-            today: this._today.value,
-            impediment: this._impediment.value
+            movie: this._movie.value,
+            cinema: this._cinema.value,
+            date: this._date.value,
+            time: this._time.value,
+            numbers: this._numbers.value
         }
 
         $.ajax({
